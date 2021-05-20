@@ -43,6 +43,17 @@ export function getMonth(dateString) {
     return monthNames[date.getMonth()];
 }
 
-export function formatDate(date) {
+/*export function formatDate(date) {
     return date.split('T')[0];
+}*/
+
+export function formatDate(date){
+    date = new Date(date);
+    var day = date.getDate()+1;
+    var month = date.getMonth()+1;
+    var year = date.getFullYear();
+
+    const formattedDate = day + "/" + month + "/" + year;
+    return formattedDate; 
 }
+
