@@ -1,4 +1,4 @@
-export function monefy(num) {
+/* export function monefy(num) {
     if (!num) return '';
 
     const numStr = String(num);
@@ -14,7 +14,19 @@ export function monefy(num) {
     }
 
     return result.reverse().join(',');
-}
+} */
+
+
+export function monefy(num){ //Acomodo la coma.
+
+    if (!num) return '';
+    
+    var n = new Number(num);
+    
+        return n.toLocaleString("es-ar", n);
+    
+    }
+
 
 export function getRandomColor() {
     return `hsl(${360 * Math.random()}, ${25 + 70 * Math.random()}%, ${
