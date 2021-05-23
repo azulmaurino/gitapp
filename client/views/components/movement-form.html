@@ -84,4 +84,36 @@
         </div>
         {% endif %}
     </div>
+
+
+    <p>
+      <fieldset>
+        <legend>¿Pudiste crear tu movimiento? SI o NO<abbr title="Este campo es obligatorio" aria-label="required">*</abbr></legend>
+        <input type="rta" required name="creacion" id="r1" >
+      </fieldset>
+     </p>
+
+     <p>
+        <label for="t1">¿Cuál es tu nombre? </label>
+        <input type="nombre" id="t2" name="nombre">
+      </p>
+
+    <p>
+      <label for="n1">¿Qué edad tienes?</label>
+       <input type="number" min="18" max="120" step="1" id="n1" name="age"
+             pattern="\d+">
+    </p>
+    
+     <p>
+      <label for="t2">¿Cuál es tu dirección de correo electrónico? </label>
+      <input type="email" id="t2" name="email">
+    </p>
+    <p>
+      <label for="t3">Deja una descripcion</label>
+      <textarea id="t3" name="msg" maxlength="140" rows="5"></textarea>
+     </p>
+    <p>
+      <button>Enviar</button>
+    </p>
+    
 </form>

@@ -111,6 +111,10 @@ const deleteMovement = (id) => {
     });
 };
 
+focusMethod = function getFocus() {
+    document.getElementById("myTextField").focus();
+  };
+
 const MovementModel = {
     Movement: Movement,
     getAll: getAllMovements,
