@@ -304,10 +304,15 @@ test('Eliminar movimiento por api', async () => {
     // Creamos el movimiento
     const movement = await MovementModel.create(movementData);
     
-
+  
     const URL = `${baseURL}/movements/${movement.id}`;
     const req = await fetch(URL, {
         method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(),
+        
     });
     
 
