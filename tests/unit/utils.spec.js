@@ -1,4 +1,4 @@
-const { formatDate } = require('../../client/js/utils.js');
+const { formatDate, monefy } = require('../../client/js/utils.js');
 
 
 describe('Método formatDate', () =>{
