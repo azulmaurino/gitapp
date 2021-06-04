@@ -314,13 +314,13 @@ test('Eliminar movimiento por api', async () => {
     expect(req.status).toBe(200);
 
     // Listamos todos los movimientos
-    const URL = `${baseURL}/movements`;
-    const req = await fetch(URL);
-    const body = await req.json();
+    const URLdos = `${baseURL}/movements`;
+    const reqdos = await fetch(URLdos);
+    const bodydos = await reqdos.json();
     // Recibimos un 200 si el listado fue desplegado correctamente
-    expect(req.status).toBe(200);
+    expect(reqdos.status).toBe(200);
     
     // Chequeamos que el listado no contenga ningun movimiento
-    expect(body.movements.length).toBe(0);
+    expect(bodydos.movements.length).toBe(0);
     
 });
