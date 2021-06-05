@@ -304,15 +304,23 @@ test('Eliminar movimiento por api', async () => {
     // Creamos el movimiento
     const movement = await MovementModel.create(movementData);
     
-
+    // Eliminamos el movimiento
     const URL = `${baseURL}/movements/${movement.id}`;
     const req = await fetch(URL, {
         method: 'DELETE',
     });
-    
 
+    // Recibimos un 200 si el endpoint esta OK
     expect(req.status).toBe(200);
 
-
+    // Listamos todos los movimientos
+    const URLdos = `${baseURL}/movements`;
+    const reqdos = await fetch(URLdos);
+    const bodydos = await reqdos.json();
+    // Recibimos un 200 si el listado fue desplegado correctamente
+    expect(reqdos.status).toBe(200);
+    
+    // Chequeamos que el listado no contenga ningun movimiento
+    expect(bodydos.movements.length).toBe(0);
     
 });
