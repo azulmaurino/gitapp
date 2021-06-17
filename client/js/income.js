@@ -63,7 +63,9 @@ window.onRemove = async function () {
     await movementService.remove(state.movement);
     state.movement = {};
     render('movement-form.html', state, refs.form);
+  
 };
+
 
 /**
  * Guarda un movimiento
