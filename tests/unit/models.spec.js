@@ -54,6 +54,18 @@ test('Crear movimiento sin fecha', async () => {
     }
 });
 
+test('Crear movimiento solo con campo description', async() => {
+    const movementData = {
+        description: 'Mes de abril',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+
+    expect(movement.description).toBe(movementData.description);
+});
+
+
 test('Listar movimientos sin resultados', async () => {
     const movements = await MovementModel.getAll();
 

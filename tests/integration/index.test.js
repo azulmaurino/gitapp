@@ -209,6 +209,8 @@ test('Crear movimiento por api', async () => {
         amount: 50000.0,
         type: MovementType.INCOME,
         category: 'Sueldo',
+        // agrego campo description
+        description: 'Mes de agosto',
     };
 
     const URL = `${baseURL}/movements`;
@@ -226,6 +228,8 @@ test('Crear movimiento por api', async () => {
     expect(movements.rows[0].amount).toBe(movementData.amount);
     expect(movements.rows[0].type).toBe(movementData.type);
     expect(movements.rows[0].category).toBe(movementData.category);
+    //
+    expect(movements.rows[0].description).toBe(movementData.description);
 });
 
 test('Editar movimiento por api', async () => {
@@ -323,4 +327,43 @@ test('Eliminar movimiento por api', async () => {
     // Chequeamos que el listado no contenga ningun movimiento
     expect(bodydos.movements.length).toBe(0);
     
+});
+
+test('Editar movimiento por api, editar campo descripción', async () => {
+    const movementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+        description: 'Mes agosto',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+
+    // Chequeamos que la descripcion sea la correspondiente
+    expect(movement.description).toBe(movementData.description);
+
+    const updateData = {
+        description: 'Mes septiembre',
+    };
+    const URL = `${baseURL}/movements/${movement.id}`;
+    const req = await fetch(URL, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData),
+    });
+    const body = await req.json();
+
+    expect(req.status).toBe(200);
+
+    // Chequeamos que la descripción esté modificada en la respuesta
+    expect(body.description).toBe(updateData.description);
+
+    const movements = await MovementModel.getAll();
+
+    // Chequeamos que la categoría se haya modificado en el modelo
+    expect(movements.rows[0].description).toBe(updateData.description);
 });
