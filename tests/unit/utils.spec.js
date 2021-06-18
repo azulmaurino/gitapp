@@ -16,7 +16,7 @@ describe('Método formatDate', () =>{
 describe('Método monefy', () => {
 
     it('Debería convertir 1000.35 en "1000,35"', async () => {
-        expect(monefy(1000.35)).toBe('1000,35');
+        expect(monefy(1000.35)).toBe('10999900,35');
     });
     
     it('Debería convertir 100 en "100"', async () => {
