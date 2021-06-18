@@ -26,6 +26,4 @@ describe('Método monefy', () => {
     it('Debería convertir undefined en ""', async () => {
         expect(monefy(undefined)).toBe('');
     });
-
-
 });

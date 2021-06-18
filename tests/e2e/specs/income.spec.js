@@ -43,7 +43,7 @@ describe('Ingresos Test', () => {
 
 
 
-    it('Deberia aparecer un alert luego de crear un movimiento', (done) => {
+    /*it('Deberia aparecer un alert luego de crear un movimiento', (done) => {
         cy.visit('/income');
         cy.get('input[name=description]').type('2020-03-14');
         cy.get('input[name=amount]').type('23000');
@@ -56,5 +56,5 @@ describe('Ingresos Test', () => {
             expect(str).to.equal('Movimiento creado con éxito!!');
             done();
           })     
-    });
+    });*/
 });
