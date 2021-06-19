@@ -25,7 +25,6 @@ test('Crear movimiento', async () => {
     //////////////////////////////////////////
 });
 
-
 test('Crear movimiento sin tipo', async () => {
     const movementData = {
         date: '01/01/2021',
