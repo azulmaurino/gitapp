@@ -54,6 +54,22 @@ test('Crear movimiento sin fecha', async () => {
     }
 });
 
+test('Crear movimiento, evaluar campo description', async() => {
+    const movementData = {
+        date: '19/06/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+        description: 'Mes de abril',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+
+    expect(movement.description).toBe(movementData.description);
+});
+
+
 test('Listar movimientos sin resultados', async () => {
     const movements = await MovementModel.getAll();
 

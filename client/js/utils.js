@@ -22,7 +22,7 @@ export function monefy(num){ //Arreglo el bug de la coma
     
     var n = new Number(num);
     
-        return n.toLocaleString("es-ar", n);
+        return n.toLocaleString("en-US", n);
     
     }
 
