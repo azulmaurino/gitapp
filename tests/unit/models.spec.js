@@ -25,7 +25,6 @@ test('Crear movimiento', async () => {
     //////////////////////////////////////////
 });
 
-
 test('Crear movimiento sin tipo', async () => {
     const movementData = {
         date: '01/01/2021',
@@ -53,6 +52,22 @@ test('Crear movimiento sin fecha', async () => {
         expect(e.name).toBe('SequelizeDatabaseError');
     }
 });
+
+test('Crear movimiento, evaluar campo description', async() => {
+    const movementData = {
+        date: '19/06/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+        description: 'Mes de abril',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+
+    expect(movement.description).toBe(movementData.description);
+});
+
 
 test('Listar movimientos sin resultados', async () => {
     const movements = await MovementModel.getAll();
