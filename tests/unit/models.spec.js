@@ -54,8 +54,12 @@ test('Crear movimiento sin fecha', async () => {
     }
 });
 
-test('Crear movimiento solo con campo description', async() => {
+test('Crear movimiento, evaluar campo description', async() => {
     const movementData = {
+        date: '19/06/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
         description: 'Mes de abril',
     };
 
