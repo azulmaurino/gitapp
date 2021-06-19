@@ -209,8 +209,7 @@ test('Crear movimiento por api', async () => {
         amount: 50000.0,
         type: MovementType.INCOME,
         category: 'Sueldo',
-        // agrego campo description
-        description: 'Mes de agosto',
+       
     };
 
     const URL = `${baseURL}/movements`;
@@ -228,9 +227,31 @@ test('Crear movimiento por api', async () => {
     expect(movements.rows[0].amount).toBe(movementData.amount);
     expect(movements.rows[0].type).toBe(movementData.type);
     expect(movements.rows[0].category).toBe(movementData.category);
-    //
+    
+});
+
+test('Crear movimiento por api, evaluar campo description', async () => {
+    const movementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+        description: 'Ingreso del sueldo mes de enero',
+    };
+    const URL = `${baseURL}/movements`;
+    const req = await fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movementData),
+    });
+    const movements = await MovementModel.getAll();
+    expect(req.status).toBe(201);
+    expect(movements.rows.length).toBe(1);
     expect(movements.rows[0].description).toBe(movementData.description);
 });
+
 
 test('Editar movimiento por api', async () => {
     const movementData = {
