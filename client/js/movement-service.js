@@ -9,7 +9,7 @@ async function getLast() {
 async function getIncomes() {
     const resp = await fetch(`${BASE_URL}/movements?type=income`);
     const { movements } = await resp.json();
-    return movements.reverse();
+    return movements;
 }
 
 async function update(movement) {
